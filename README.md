@@ -1,11 +1,15 @@
 
 # `<numeric>` algorithms for C++20 Ranges #
 
+[![Standard](https://img.shields.io/badge/c%2B%2B-17/20-blue.svg)](https://en.wikipedia.org/wiki/C%2B%2B#Standardization)
+[![License](https://img.shields.io/badge/license-BSL-blue.svg)](http://www.boost.org/LICENSE_1_0.txt)
+[![Try it on godbolt online](https://img.shields.io/badge/on-godbolt-blue.svg)](https://gcc.godbolt.org/z/efj74i) 
+
 C++20 includes updated versions of the many algorithms in the `<algorithm>` header. This header supplements these with updated versions of
 other algorithms from the `<numeric>` header.
 
 If you're using C++20 ranges (or [NanoRange](http://github.com/tcbrindle/nanorange) -- see below)
-then you can drop the [numeric_ranges.hpp]() header into your project and use it
+then you can drop the [numeric_ranges.hpp](https://raw.githubusercontent.com/tcbrindle/numeric_ranges/master/include/numeric_ranges.hpp) header into your project and use it
 as a modern replacement for `<numeric>` until such time as C++23 comes along.
 
 ## Examples ##
@@ -18,7 +22,7 @@ tcb::partial_sum(arr, std::back_inserter(out));
 // out contains [1, 3, 6, 10]
 
 const int prod = tcb::inner_product(arr, out, 0);
-// prod = (1 * 1) + (2 * 3) + (3 * 6) * (4 * 10) = 65
+// prod = (1 * 1) + (2 * 3) + (3 * 6) + (4 * 10) = 65
 assert(prod == 65);
 
 constexpr auto sq = [](int i) { return i * i; };
@@ -27,11 +31,13 @@ constexpr int sum = tcb::accumulate(arr, 0, {}, sq);
 static_assert(sum == 30);
 ```
 
+[![Try it on godbolt online](https://img.shields.io/badge/on-godbolt-blue.svg)](https://gcc.godbolt.org/z/efj74i) 
+
+
 ## Usage ##
 
 If your standard library provides an implementation of C++20 ranges, you can
-just copy [numeric_ranges.hpp]() into your project and use it as an alternative to
-the `<numeric>` header.
+just copy [numeric_ranges.hpp](https://raw.githubusercontent.com/tcbrindle/numeric_ranges/master/include/numeric_ranges.hpp) into your project and use it as an alternative to the `<numeric>` header.
 
 The rest of this respository contains testing machinery and is not required for use.
 
@@ -60,7 +66,7 @@ Note that in this implementation, `reduce` and `transform_reduce` always perform
 
 ## Caveats ##
 
-Unlike the other algorithms in `std::ranges` (and the eventual C++23) version of
+Unlike the other algorithms in `std::ranges` (and the eventual C++23 version of
 `<numeric>`) the implementations in this library are **unconstrained**.
 
 This means that it's possible to get horrible, C++98-style template error messages when things
